@@ -30,6 +30,6 @@ Route::get('/about', function () {
 
 Route::get('/db', function () {
     DB::table('players')->insert([
-        'name' => "Zion Williamson",
+        'name' => "Brandon Ingram",
     ]);
 });
