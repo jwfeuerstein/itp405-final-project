@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +22,14 @@ if (env('APP_ENV') !== 'local') {
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/db', function () {
+    DB::table('players')->insert([
+        'name' => "Zion Williamson",
+    ]);
 });
