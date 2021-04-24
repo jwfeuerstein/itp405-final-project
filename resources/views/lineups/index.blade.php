@@ -6,6 +6,7 @@
 
 @foreach($lineups as $lineup)
     <a href="{{route('lineups.show', [ 'id' => $lineup->id ])}}">{{$lineup->name}}</a>
+    <br/>
 @endforeach
 
 @endsection

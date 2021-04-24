@@ -23,28 +23,33 @@ class LineupController extends Controller
         $lineup = DB::table('lineups')->where('id', '=', $id)->first();
 
         $player1 = DB::table('lineups')
+            ->where('lineups.id', '=', $id)
             ->join('players', 'lineups.player1_id', '=', 'players.id')
             ->join('statistics', 'lineups.player1_id', '=', 'statistics.player_id')
             ->first();
 
         $player2 = DB::table('lineups')
+            ->where('lineups.id', '=', $id)
             ->join('players', 'lineups.player2_id', '=', 'players.id')
-            ->join('statistics', 'lineups.player1_id', '=', 'statistics.player_id')
+            ->join('statistics', 'lineups.player2_id', '=', 'statistics.player_id')
             ->first();
 
         $player3 = DB::table('lineups')
+            ->where('lineups.id', '=', $id)
             ->join('players', 'lineups.player3_id', '=', 'players.id')
-            ->join('statistics', 'lineups.player1_id', '=', 'statistics.player_id')
+            ->join('statistics', 'lineups.player3_id', '=', 'statistics.player_id')
             ->first();
 
         $player4 = DB::table('lineups')
+            ->where('lineups.id', '=', $id)
             ->join('players', 'lineups.player4_id', '=', 'players.id')
-            ->join('statistics', 'lineups.player1_id', '=', 'statistics.player_id')
+            ->join('statistics', 'lineups.player4_id', '=', 'statistics.player_id')
             ->first();
 
         $player5 = DB::table('lineups')
+            ->where('lineups.id', '=', $id)
             ->join('players', 'lineups.player5_id', '=', 'players.id')
-            ->join('statistics', 'lineups.player1_id', '=', 'statistics.player_id')
+            ->join('statistics', 'lineups.player5_id', '=', 'statistics.player_id')
             ->first();
 
         $total_ppg = $player1->points_per_game + $player2->points_per_game +
