@@ -25,12 +25,9 @@ Route::get('/', [LineupController::class, 'index'])->name('lineups.index');
 Route::get('/lineups', [LineupController::class, 'index']);
 Route::get('/lineups/{id}', [LineupController::class, 'show'])->name('lineups.show');
 
+Route::get('/lineups/create/new', [LineupController::class, 'create'])->name('lineups.create');
+Route::post('/lineups/create/new', [LineupController::class, 'store'])->name('lineups.store');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
-
-Route::get('/db', function () {
-    DB::table('players')->insert([
-        'name' => "Brandon Ingram",
-    ]);
-});
