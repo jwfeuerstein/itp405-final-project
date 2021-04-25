@@ -23,10 +23,11 @@
     </div>
     <br/>
     <br/>
-    <form action="{{route('lineups.delete', ['id' => $lineup->id])}}" method="POST">
+    <a href="{{ route('lineups.edit', ['id' => $lineup->id]) }}" style="display:inline-block;" class="btn btn-primary btn-sm">Edit This Lineup</a>
+    <form action="{{route('lineups.delete', ['id' => $lineup->id])}}" style="display:inline-block; margin-left:10px;" method="POST">
         @csrf
         <button type="submit" class="btn btn-danger btn-sm">
-            Delete Lineup
+            Delete This Lineup
         </button>
     </form>
     

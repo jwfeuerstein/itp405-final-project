@@ -30,6 +30,9 @@ Route::post('/lineups/create', [LineupController::class, 'store'])->name('lineup
 
 Route::post('/lineups/delete/{id}', [LineupController::class, 'delete'])->name('lineups.delete');
 
+Route::get('/lineups/edit/{id}', [LineupController::class, 'edit'])->name('lineups.edit');
+Route::post('/lineups/edit/{id}', [LineupController::class, 'save'])->name('lineups.save');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');

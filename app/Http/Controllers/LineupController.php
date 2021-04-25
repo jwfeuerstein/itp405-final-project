@@ -21,7 +21,9 @@ class LineupController extends Controller
     public function show($id)
     {
         $lineup = DB::table('lineups')->where('id', '=', $id)->first();
-
+        if (!$lineup) {
+            abort(404);
+        }
         $player1 = DB::table('lineups')
             ->where('lineups.id', '=', $id)
             ->join('players', 'lineups.player1_id', '=', 'players.id')
@@ -133,5 +135,44 @@ class LineupController extends Controller
         return redirect()
             ->route('lineups.index')
             ->with('success', "Successfully deleted {$lineup->name}");
+    }
+
+    public function edit($id)
+    {
+        $lineup = DB::table('lineups')->where('id', '=', $id)->first();
+        if (!$lineup) {
+            abort(404);
+        }
+        $players = DB::table('players')->orderBy('name')->get();
+
+        return view('lineups.edit', [
+            'lineup' => $lineup,
+            'players' => $players,
+        ]);
+    }
+
+    public function save($id, Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:50',
+            'pg' => 'required|exists:players,id',
+            'sg' => 'required|exists:players,id',
+            'sf' => 'required|exists:players,id',
+            'pf' => 'required|exists:players,id',
+            'c' => 'required|exists:players,id',
+        ]);
+
+        DB::table('lineups')->where('id', '=', $id)->update([
+            'name' => $request->input('name'),
+            'player1_id' => $request->input('pg'),
+            'player2_id' => $request->input('sg'),
+            'player3_id' => $request->input('sf'),
+            'player4_id' => $request->input('pf'),
+            'player5_id' => $request->input('c'),
+        ]);
+
+        return redirect()
+            ->route('lineups.index')
+            ->with('success', "Successfully edited {$request->input('name')}");
     }
 }
