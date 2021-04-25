@@ -20,5 +20,14 @@
         <p>Total Assists Per Game: {{$total_apg}}</p>
         <p>Average Field Goal Percentage: {{$avg_fgp}}%</p>
         <p>Average Player Efficiency Rating: {{$avg_per}}</p>
-        </div>
+    </div>
+    <br/>
+    <br/>
+    <form action="{{route('lineups.delete', ['id' => $lineup->id])}}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-danger btn-sm">
+            Delete Lineup
+        </button>
+    </form>
+    
 @endsection

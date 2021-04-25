@@ -125,4 +125,13 @@ class LineupController extends Controller
             ->route('lineups.index')
             ->with('success', "Successfully created {$request->input('name')}");
     }
+
+    public function delete($id)
+    {
+        $lineup = DB::table('lineups')->where('id', '=', $id)->first();
+        DB::table('lineups')->where('id', '=', $id)->delete();
+        return redirect()
+            ->route('lineups.index')
+            ->with('success', "Successfully deleted {$lineup->name}");
+    }
 }
