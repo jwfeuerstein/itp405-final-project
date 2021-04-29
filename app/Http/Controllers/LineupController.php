@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class LineupController extends Controller
 {
@@ -74,6 +76,11 @@ class LineupController extends Controller
             $player3->efficiency + $player4->efficiency +
             $player5->efficiency) / 5.0;
 
+        $comments = DB::table('comments')
+            ->where('comments.lineup_id', '=', $lineup->id)
+            ->join('users', 'comments.user_id', '=', 'users.id')
+            ->get();
+
         return view('lineups.show', [
             'lineup' => $lineup,
             'player1' => $player1,
@@ -86,6 +93,7 @@ class LineupController extends Controller
             'total_apg' => $total_apg,
             'avg_fgp' => $avg_fgp,
             'avg_per' => $avg_per,
+            'comments' => $comments
         ]);
     }
 
@@ -174,5 +182,30 @@ class LineupController extends Controller
         return redirect()
             ->route('lineups.index')
             ->with('success', "Successfully edited {$request->input('name')}");
+    }
+
+    public function comment($id, Request $request)
+    {
+        $request->validate([
+            'content' => 'required|min:5',
+        ]);
+
+        if (!Auth::check()) {
+            return redirect()
+                ->route('lineups.show', ['id' => $id])
+                ->with('error', 'Must be logged in to post a comment.');
+        }
+
+        DB::table('comments')->insert([
+            'user_id' => Auth::id(),
+            'lineup_id' => $id,
+            'content' => $request->input('content'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        return redirect()
+            ->route('lineups.show', ['id' => $id])
+            ->with('success', 'Successfully posted comment.');
     }
 }

@@ -17,7 +17,21 @@
                         <a class="nav-link" href="{{route('about')}}">About</a>       
                         <a class="nav-link" href="{{route('lineups.index')}}">Lineups</a>               
                     </li>
-                    
+                    @if (Auth::check())
+                    <li class="nav-item">
+                        <form method="post" action="{{ route('auth.logout') }}">
+                             @csrf
+                            <button type="submit" class="btn btn-link">Logout</button>
+                        </form>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('auth.registerForm')}}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('auth.loginForm')}}">Login</a>
+                    </li>
+                    @endif
                 </ul>
             </div>
             <div class="col-9">
