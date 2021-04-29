@@ -1,16 +1,27 @@
 @extends('layouts.main')
 
-@section('title', $lineup->name)
+@section('title') 
+{{$lineup->name}} Lineup
+@endsection
 
 @section('content')
     <br/>
-    <div style="display: inline-block">
+    <div style="display: inline-block;">
     <h5>Starting Lineup</h5>
-    <p>Point Guard: {{$player1->name}}</p>
-    <p>Shooting Guard: {{$player2->name}}</p>
-    <p>Small Forward: {{$player3->name}}</p>
-    <p>Power Forward: {{$player4->name}}</p>
-    <p>Center: {{$player5->name}}</p>
+    <p style="display: inline-block;">Point Guard: </p>
+    <a href="{{route('players.show', [ 'id' => $player1->id ])}}" style="display: inline-block;">{{$player1->name}}</a>
+    <br />
+    <p style="display: inline-block;">Shooting Guard: </p>
+    <a href="{{route('players.show', [ 'id' => $player2->id ])}}" style="display: inline-block;">{{$player2->name}}</a>
+    <br />
+    <p style="display: inline-block;">Small Forward: </p>
+    <a href="{{route('players.show', [ 'id' => $player3->id ])}}" style="display: inline-block;">{{$player3->name}}</a>
+    <br/>
+    <p style="display: inline-block;">Power Forward: </p>
+    <a href="{{route('players.show', [ 'id' => $player4->id ])}}" style="display: inline-block;">{{$player4->name}}</a>
+    <br/>
+    <p style="display: inline-block;">Center: </p>
+    <a href="{{route('players.show', [ 'id' => $player5->id ])}}" style="display: inline-block;">{{$player5->name}}</a>
     </div>
 
     <div style="display: inline-block; margin-left: 300px;">
