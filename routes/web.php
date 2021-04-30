@@ -23,8 +23,8 @@ if (env('APP_ENV') !== 'local') {
     URL::forceScheme('https');
 }
 
-Route::get('/', [LineupController::class, 'index'])->name('lineups.index');
-Route::get('/lineups', [LineupController::class, 'index']);
+Route::get('/', [LineupController::class, 'home'])->name('lineups.home');
+Route::get('/lineups', [LineupController::class, 'index'])->name('lineups.index');
 Route::get('/lineups/show/{id}', [LineupController::class, 'show'])->name('lineups.show');
 
 Route::get('/players/{id}', [PlayerController::class, 'show'])->name('players.show');

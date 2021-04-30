@@ -12,7 +12,7 @@
     average player efficiency rating, and average field goal percentage. For 
     example, the user could select the 2021 Brooklyn Nets and be taken to a 
     page that displays their starting lineup of Kyrie Irving, James Harden, 
-    Kevin Durant, Joe Harris, and DeAndre Jordan. The user can edit or delete 
+    Kevin Durant, Blake Griffin, and DeAndre Jordan. The user can edit or delete 
     this lineup, or decide to create a brand new lineup by selecting a starting 
     five from the database of players. This new lineup will then have a page 
     similar to the one for existing lineups, where the user can see the players 

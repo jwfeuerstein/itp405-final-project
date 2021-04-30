@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <h1 class="text-center">NBA Lineup Builder</h1>
+    <img height="60" style="margin-bottom: 20px; margin-left: 20px; display: inline;" src="{{ URL::to('/img/logo.jpg') }}">
+    <h1 style="display: inline-block; margin-left:30px; margin-top:30px;" >NBA Lineup Builder</h1>
     <title>@yield('title')</title>
 </head>
 <body>
@@ -14,7 +15,12 @@
             <div class="col-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('about')}}">About</a>       
+                        <a class="nav-link" href="{{route('lineups.home')}}">Home</a>                     
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('about')}}">About</a>                     
+                    </li>
+                    <li class="nav-item"> 
                         <a class="nav-link" href="{{route('lineups.index')}}">Lineups</a>               
                     </li>
                     @if (Auth::check())
