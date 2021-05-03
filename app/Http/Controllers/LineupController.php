@@ -160,6 +160,7 @@ class LineupController extends Controller
     public function delete($id)
     {
         $lineup = DB::table('lineups')->where('id', '=', $id)->first();
+        DB::table('comments')->where('lineup_id', '=', $id)->delete();
         DB::table('lineups')->where('id', '=', $id)->delete();
         return redirect()
             ->route('lineups.index')
@@ -221,8 +222,8 @@ class LineupController extends Controller
             'user_id' => Auth::id(),
             'lineup_id' => $id,
             'content' => $request->input('content'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_time' => Carbon::now(),
+            'updated_time' => Carbon::now(),
         ]);
 
         return redirect()

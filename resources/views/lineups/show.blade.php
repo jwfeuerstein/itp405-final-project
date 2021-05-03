@@ -60,9 +60,9 @@
     <br />
     <h4>Comments:</h4>
     <br/>
-    @foreach($comments->sortByDesc('created_at') as $comment)
+    @foreach($comments->sortByDesc('created_time') as $comment)
     <h5>{{ $comment->content }}</h5>
-    <small>Posted {{ $comment->created_at }} by {{ $comment->name }}</small>
+    <small>Posted {{ $comment->created_time }} by {{ $comment->name }}</small>
     <br />
     <br />
     @endforeach
