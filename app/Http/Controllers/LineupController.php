@@ -62,21 +62,6 @@ class LineupController extends Controller
             ->join('statistics', 'lineups.player5_id', '=', 'statistics.player_id')
             ->first();
 
-        /*
-        $players = DB::table('lineups')
-            ->where('lineups.id', '=', $id)
-            ->join('players', function ($join) {
-                $join->on('lineups.player1_id', '=', 'players.id');
-                $join->orOn('lineups.player2_id', '=', 'players.id');
-                $join->orOn('lineups.player3_id', '=', 'players.id');
-                $join->orOn('lineups.player4_id', '=', 'players.id');
-                $join->orOn('lineups.player5_id', '=', 'players.id');
-            })
-            ->join('statistics', function ($join) {
-                $join->on('players.id', '=', 'statistics.player_id');
-            })
-            ->get();
-            */
         $total_ppg = $player1->points_per_game + $player2->points_per_game +
             $player3->points_per_game + $player4->points_per_game +
             $player5->points_per_game;
