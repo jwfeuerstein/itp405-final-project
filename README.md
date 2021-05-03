@@ -7,13 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Heroku App
+## Heroku App and Video Demo
 
-[View Heroku app](https://jwfeuers-itp405-final-project.herokuapp.com/)
-
-## Video Demo
-
-[View Video demo](https://drive.google.com/file/d/1Mpdyq7FBxN13bP2xtD92yvdVWHXoQOL0/view?usp=sharing)
+-   [View Heroku app](https://jwfeuers-itp405-final-project.herokuapp.com/)
+-   [View Video demo](https://drive.google.com/file/d/1Mpdyq7FBxN13bP2xtD92yvdVWHXoQOL0/view?usp=sharing)
 
 ## Database Schema
 
